@@ -1,0 +1,81 @@
+<div class="container" style="max-width:55%;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Sign Up
+    </div>
+
+    <div class="panel-body">
+      <form [formGroup]="userForm" class="form-horizontal">
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" placeholder="Email"
+              formControlName="email">
+            <div *ngIf="!userForm.get('email').valid && userForm.get('email').touched">
+              <div class="alert alert-danger" *ngIf="userForm.get('email').errors.required">Please enter email id</div>
+              <div class="alert alert-danger" *ngIf="userForm.get('email').errors.minlength">Please enter valid email id</div>
+            </div>
+          </div>
+        </div>
+    
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword3"
+          placeholder="Password" formControlName="password">
+          <div *ngIf="!userForm.get('password').valid && userForm.get('password').touched">
+              <div class="alert alert-danger" *ngIf="userForm.get('password').errors.required">Please enter password</div>
+              <div class="alert alert-danger" *ngIf="userForm.get('password').errors.minlength">Please enter valid password</div>
+            </div>
+          </div>
+      </div>
+
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-10">
+        <input type="fname" class="form-control" id="inputFname3" 
+          placeholder="First Name" formControlName="firstname">
+          <div *ngIf="!userForm.get('firstname').valid && userForm.get('firstname').touched">
+              <div class="alert alert-danger" *ngIf="userForm.get('firstname').errors.required">Please enter first name</div>
+              <div class="alert alert-danger" *ngIf="userForm.get('firstname').errors.minlength">Please enter valid first name</div>
+            </div>
+          </div>
+      </div>
+
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Phone No</label>
+      <div class="col-sm-10">
+        <input type="phno" class="form-control" id="inputPhno3" 
+          placeholder="Phone Number" formControlName="phone">
+          <div *ngIf="!userForm.get('phone').valid && userForm.get('phone').touched">
+              <div class="alert alert-danger" *ngIf="userForm.get('phone').errors.required">Please enter phone no</div>
+              <div class="alert alert-danger" *ngIf="userForm.get('phone').errors.minlength">Please enter valid phone no</div>
+            </div>
+          </div>
+      </div>
+
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
+      <div class="col-sm-10">
+        <input type="radio" value="male" formControlName="gender">
+        Male &nbsp;
+        <input type="radio" value="female"  formControlName="gender">
+        Female
+        <div *ngIf="!userForm.get('gender').valid && userForm.get('gender').touched">
+            <div class="alert alert-danger" *ngIf="userForm.get('gender').errors.required">Please select gender</div>
+            <div class="alert alert-danger" *ngIf="userForm.get('gender').errors.minlength">Please select gender</div>
+          </div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success"  [disabled]="!userForm.valid" (click)="signUp()">Register</button>
+      </div>
+    </div>
+
+    </form>
+
+</div>
+</div>
+</div>

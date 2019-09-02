@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+
+    <h1>Create post</h1>
+
+    <form [formGroup]="userForm">
+
+      <div class="form-group">
+        <label for="title">Title <span class="require">*</span></label>
+        <input type="text" name="title" [(ngModel)]="post.title" class="form-control" formControlName="title" />
+        <div *ngIf="!userForm.get('title').valid && userForm.get('title').touched">
+          <div class="alert alert-danger" *ngIf="userForm.get('title').errors.required">Please enter title</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea rows="5" name="description" [(ngModel)]="post.description" class="form-control"
+          formControlName="description"></textarea>
+        <div *ngIf="!userForm.get('description').valid && userForm.get('description').touched">
+          <div class="alert alert-danger" *ngIf="userForm.get('description').errors.required">Please type description
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <p><span class="require">*</span> - required fields</p>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid" (click)="create()">
+          Create
+        </button>
+        <button class="btn btn-default" [disabled]="!userForm.valid" (click)="cancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

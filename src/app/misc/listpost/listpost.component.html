@@ -1,0 +1,71 @@
+<!-- Page Content -->
+<div class="container" *ngFor="let post of blogPost | paginate:{itemsPerPage:3,currentPage:p}">
+
+  <div class="row">
+    <div class="span8">
+      <div class="row">
+        <div class="span8">
+          <h4><strong><a href="#"> {{post.title}} </a></strong></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <p>
+            {{post.description}}
+          </p>
+          <p><a class="btn btn-primary" href="#">Read more</a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span8">
+          <p></p>
+          <div *ngFor="let comment of post.comments">
+            <p> {{comment.comment}} : by {{comment.commentator}}</p>
+          </div>
+          <p>
+            <!-- <i class="icon-user"></i> by <a href="#">John</a> -->
+            | <i class="glyphicon glyphicon-thumbs-up"></i> <a href="#"> Like </a>
+            | <i class="icon-comment"></i> <a href="#" (click)=draftComment(post._id)> Comments </a>
+            | <i class="glyphicon glyphicon-trash"></i><a (click)="onDelete(post._id)"> Delete </a>
+          </p>
+        </div>
+        <div>
+          <textarea name="comments" [(ngModel)]="comments"></textarea>
+        </div>
+        <button (click)=postComment(post._id)> Post </button>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<pagination-controls (pageChange)='p=$event'></pagination-controls>
+
+
+
+<!-- 
+
+<div class="row">
+    <div>
+      <h3> {{post.title}} </h3>
+      <p> {{post.description}} </p>
+      <a href="#" class="btn btn-primary a-btn-slide-text">
+        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        <span><strong>View</strong></span>            
+      </a> | 
+      <a href="#" class="btn btn-success a-btn-slide-text">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+        <span><strong>Like</strong></span>            
+      </a> | 
+      <a href="#" class="btn btn-info a-btn-slide-text">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+        <span><strong>Comment</strong></span>            
+      </a> |
+      <a href="#" class="btn btn-danger a-btn-slide-text">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+         <span><strong>Delete</strong></span>            
+     </a>
+    </div>
+  </div> -->
